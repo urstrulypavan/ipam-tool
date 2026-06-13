@@ -1,0 +1,89 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+
+    margin: 0;
+    padding: 40px;
+}
+
+.container {
+    width: 900px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    background-color: #1e1e1e;
+
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input {
+    padding: 12px;
+
+    background-color: #2b2b2b;
+    color: white;
+
+    border: 1px solid #444;
+    border-radius: 6px;
+}
+
+button {
+    padding: 12px;
+
+    background-color: #2563eb;
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+.result-card {
+    margin-top: 20px;
+
+    background-color: #1e1e1e;
+
+    padding: 20px;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background-color: #2563eb;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #444;
+    text-align: left;
+}
+
+.error {
+    color: #ff6b6b;
+    margin-top: 15px;
+}

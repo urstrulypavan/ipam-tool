@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPAM Tool</title>
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+<body>
+
+    <div class="container">
+
+    <h1>IP Address Management Tool</h1>
+
+    <form method="POST">
+
+    <input
+        type="number"
+        name="vlan_id"
+        placeholder="VLAN ID"
+        required
+    >
+
+    <br><br>
+
+    <input
+        type="text"
+        name="department"
+        placeholder="Department"
+        required
+    >
+
+    <br><br>
+
+    <input
+        type="text"
+        name="network"
+        placeholder="Enter Network (e.g. 192.168.10.0/24)"
+        required
+    >
+
+    <br><br>
+
+    <button type="submit">
+        Calculate
+    </button>
+
+    </form>
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    {% if result %}
+    <div class="result-card">
+
+        <h2>Results</h2>
+
+        <h2> VLAN {{ result.vlan_id }} - {{ result.department }} </h2>
+
+        <p>Network Address: {{ result.network_address }}</p>
+
+        <p>Broadcast Address: {{ result.broadcast_address }}</p>
+
+        <p>Subnet Mask: {{ result.subnet_mask }}</p>
+
+        <p>Wildcard Mask: {{ result.wildcard_mask }}</p>
+
+        <p>Total Hosts: {{ result.total_hosts }}</p>
+
+        <p>First Host: {{ result.first_host }}</p>
+
+        <p>Last Host: {{ result.last_host }}</p>
+    </div>
+    {% endif %}
+
+    {% if vlan_plans %}
+
+<h2>Saved VLAN Plans</h2>
+
+<table border="1">
+
+    <tr>
+        <th>VLAN</th>
+        <th>Department</th>
+        <th>Network</th>
+        <th>Hosts</th>
+    </tr>
+
+    {% for vlan in vlan_plans %}
+
+    <tr>
+        <td>{{ vlan.vlan_id }}</td>
+
+        <td>{{ vlan.department }}</td>
+
+        <td>{{ vlan.network_address }}</td>
+
+        <td>{{ vlan.total_hosts }}</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<br>
+
+    <a href="/export">
+        <button>
+            Export CSV
+        </button>
+    </a>
+    
+{% endif %}
+
+</div>
+
+</body>
+</html>
